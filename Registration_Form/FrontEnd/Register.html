@@ -1,0 +1,95 @@
+<!--
+Author: Colorlib
+Author URL: https://colorlib.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Creative Colorlib SignUp Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!-- Custom Theme files -->
+<link href="style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- //Custom Theme files -->
+<!-- web font -->
+<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+<!-- //web font -->
+</head>
+<body>
+	<!-- main -->
+	<div class="main-w3layouts wrapper">
+		<h1>Creative SignUp Form</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<form action="#" method="post">
+					<input id="FN" class="text"  type="text" name="FirstName" placeholder="FirstName" required="">
+					<input id="LN" class="text email" type="text" name="LastName" placeholder="LastName" required="">
+					<input id="Age" class="text" type="text" name="Age" placeholder="Age" required="">
+					<input id="email" class="text email" type="email" name="Email" placeholder="Email" required="">
+					<div class="wthree-text">
+						<label class="anim">
+							<input type="checkbox" class="checkbox" required="">
+							<span>I Agree To The Terms & Conditions</span>
+						</label>
+						<div class="clear"> </div>
+					</div>
+					<input type="button" onclick="SaveData()"  value="Register">
+				</form>
+				
+			</div>
+		</div>
+		<!-- copyright -->
+		<div class="colorlibcopy-agile">
+			<p>© 2018 Colorlib Signup Form. All rights reserved | Design by <a href="https://colorlib.com/" target="_blank">Colorlib</a></p>
+		</div>
+		<!-- //copyright -->
+		<ul class="colorlib-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<!-- //main -->
+
+
+
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+
+			
+
+			// Save the new user details
+            function SaveData() {
+				$.ajax({
+                    url: '/api/Registartion/InserData',
+					method: 'POST',
+					data: {
+						FirstName: $('.FN').val(),
+                        LastName: $('.LN').val(),
+                        Age: $('.Age').val(),
+						email: $('.Email').val()
+					},
+					success: function () {
+						$('#successModal').modal('show');
+					},
+					error: function (jqXHR) {
+						$('#divErrorText').text(jqXHR.responseText);
+						$('#divError').show('fade');
+					}
+				});
+			};
+		});
+	</script>
+</body>
+</html>
